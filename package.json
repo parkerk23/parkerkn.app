@@ -2,7 +2,7 @@
   "name": "parkerkn.app",
   "version": "0.01.0",
   "description": "Parker Knapp Resume",
-  "main": "index.js",
+  "main": "main.js",
   "dependencies": {
     "express": "^4.17.1"
   },
