@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 
 // Set up static files
 app.use(express.static('public'));
