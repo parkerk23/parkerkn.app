@@ -1,4 +1,9 @@
 import SolarSystem from '../components/SolarSystem';
+import '../globals.css';
+import { AppProps } from 'next/app';
+
+
+export default MyApp;
 
 const express = require('express');
 const path = require('path');
@@ -17,7 +22,9 @@ app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
 
-
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
 
 export default function Home() {
   return (
