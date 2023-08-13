@@ -1,3 +1,5 @@
+import SolarSystem from '../components/SolarSystem';
+
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -14,3 +16,14 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
+
+
+
+export default function Home() {
+  return (
+    <div>
+      <SolarSystem />
+      {/* other components */}
+    </div>
+  );
+}
