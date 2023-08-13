@@ -1,7 +1,6 @@
-// components/SolarSystem.tsx
 import React from 'react';
 
-const SolarSystem: React.FC = () => {
+const SolarSystem = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-black">
       <div className="relative">
