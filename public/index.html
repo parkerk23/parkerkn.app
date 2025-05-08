@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume - [Your Name]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Your React App Code -->
+    <script type="text/babel">
+        // App Component
+        const App = () => {
+            const [activeSection, setActiveSection] = React.useState('about');
+
+            const handleSectionChange = (sectionId) => {
+                setActiveSection(sectionId);
+            };
+
+            return (
+                <div className="container">
+                    <Sidebar activeSection={activeSection} onSectionChange={handleSectionChange} />
+                    <Content activeSection={activeSection} />
+                </div>
+            );
+        };
+
+        // Sidebar Component
+        const Sidebar = ({ activeSection, onSectionChange }) => {
+            return (
+                <nav className="sidebar">
+                    <div className="profile-picture-container">
+                        <img 
+                            src="placeholder-profile.jpg" 
+                            alt="Your Name" 
+                            id="profilePic" 
+                            className="profile-picture"
+                        />
+                    </div>
+                    <Navigation activeSection={activeSection} onSectionChange={onSectionChange} />
+                    <div className="sidebar-decoration"></div>
+                </nav>
+            );
+        };
+
+        // Navigation Component
+        const Navigation = ({ activeSection, onSectionChange }) => {
+            const sections = [
+                { id: 'about', label: 'About Me' },
+                { id: 'experience', label: 'Experience' },
+                { id: 'education', label: 'Education' },
+                { id: 'skills', label: 'Skills' },
+                { id: 'projects', label: 'Projects' },
+                { id: 'contact', label: 'Contact' }
+            ];
+
+            const handleLinkClick = (e, sectionId) => {
+                e.preventDefault();
+                onSectionChange(sectionId);
+                window.history.pushState(null, null, `#${sectionId}`);
+            };
+
+            return (
+                <ul>
+                    {sections.map(section => (
+                        <li key={section.id}>
+                            <a 
+                                href={`#${section.id}`}
+                                className={`nav-link ${activeSection === section.id ? 'active-link' : ''}`}
+                                onClick={(e) => handleLinkClick(e, section.id)}
+                            >
+                                {section.label}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            );
+        };
+
+        // Content Component
+        const Content = ({ activeSection }) => {
+            // Define section content
+            const sections = {
+                about: (
+                    <section id="about" className="content-section active-section">
+                        <h2>About Me</h2>
+                        <p>Hello! I'm [Your Name], a passionate [Your Profession/Field] based in [Your Location]. I have a strong interest in [mention a key interest or two related to your field]. I enjoy creating intuitive and dynamic user experiences.</p>
+                        <p>When I'm not coding/working, you can find me [mention a hobby or two].</p>
+                    </section>
+                ),
+                experience: (
+                    <section id="experience" className="content-section">
+                        <h2>Experience</h2>
+                        <div className="job">
+                            <h3>[Job Title] - [Company Name]</h3>
+                            <p className="date">[Month Year] – [Month Year] / Present</p>
+                            <ul>
+                                <li>Responsibility or achievement 1.</li>
+                                <li>Responsibility or achievement 2.</li>
+                                <li>Developed and maintained web applications using technologies like Node.js, React, and MongoDB.</li>
+                            </ul>
+                        </div>
+                        <div className="job">
+                            <h3>[Previous Job Title] - [Previous Company Name]</h3>
+                            <p className="date">[Month Year] – [Month Year]</p>
+                            <ul>
+                                <li>Responsibility or achievement 1.</li>
+                                <li>Responsibility or achievement 2.</li>
+                            </ul>
+                        </div>
+                    </section>
+                ),
+                education: (
+                    <section id="education" className="content-section">
+                        <h2>Education</h2>
+                        <div className="education-item">
+                            <h3>[Your Degree] - [Major]</h3>
+                            <p>[University Name], [City, State]</p>
+                            <p className="date">Graduated: [Month Year]</p>
+                            <p>Relevant coursework: [Course 1], [Course 2]</p>
+                        </div>
+                    </section>
+                ),
+                skills: (
+                    <section id="skills" className="content-section">
+                        <h2>Skills</h2>
+                        <div className="skills-grid">
+                            {['JavaScript', 'Node.js', 'Express.js', 'React', 'HTML5', 
+                            'CSS3', 'MongoDB', 'Git', 'REST APIs', 'Agile Methodology'].map(skill => (
+                                <span key={skill} className="skill-tag">{skill}</span>
+                            ))}
+                        </div>
+                    </section>
+                ),
+                projects: (
+                    <section id="projects" className="content-section">
+                        <h2>Projects</h2>
+                        <div className="project">
+                            <h3>[Project Name 1]</h3>
+                            <p>A brief description of your project. Highlight the technologies used and your role.</p>
+                            <p><strong>Technologies:</strong> [Tech 1, Tech 2, Tech 3]</p>
+                            <a href="#" target="_blank" className="project-link">View Project</a>
+                        </div>
+                        <div className="project">
+                            <h3>[Project Name 2]</h3>
+                            <p>Another project description. What problem did it solve? What did you learn?</p>
+                            <p><strong>Technologies:</strong> [Tech 1, Tech 2, Tech 3]</p>
+                            <a href="#" target="_blank" className="project-link">View Project</a>
+                        </div>
+                    </section>
+                ),
+                contact: (
+                    <section id="contact" className="content-section">
+                        <h2>Contact</h2>
+                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of something amazing. Feel free to reach out!</p>
+                        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                        <p>LinkedIn: <a href="#" target="_blank">[Your LinkedIn Profile URL]</a></p>
+                        <p>GitHub: <a href="#" target="_blank">[Your GitHub Profile URL]</a></p>
+                    </section>
+                )
+            };
+
+            return (
+                <main className="content">
+                    {Object.keys(sections).map(sectionId => (
+                        <div key={sectionId} className={activeSection === sectionId ? '' : 'hidden'}>
+                            {sections[sectionId]}
+                        </div>
+                    ))}
+                </main>
+            );
+        };
+
+        // Initialize the React app
+        document.addEventListener('DOMContentLoaded', function() {
+            const root = document.getElementById('root');
+            const appRoot = ReactDOM.createRoot(root);
+            appRoot.render(<App />);
+
+            // Handle initial hash in URL
+            if (window.location.hash) {
+                // You could set initial state based on hash here if needed
+            }
+
+            // Add animation for profile picture
+            const profilePic = document.getElementById('profilePic');
+            if (profilePic) {
+                profilePic.style.opacity = '0';
+                profilePic.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    profilePic.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    profilePic.style.opacity = '1';
+                    profilePic.style.transform = 'scale(1)';
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
