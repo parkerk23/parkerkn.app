@@ -1,318 +1,231 @@
-/* Basic Reset & Global Styles */
-* {
+/* Global Resets and Body Styling */
+/* #EEE1B3 #8E6C88 #4A5043 #A44A3F #0D0630 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: #EEE1B3;
+    color: #0D0630;
+    line-height: 1.6;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    background-color: #2c3e50; /* Dark Slate Blue - Non-white background */
-    color: #ecf0f1; /* Light Gray - For general text */
+#app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.main-container {
     display: flex;
     min-height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-.container {
-    display: flex;
-    width: 100%;
-    max-width: 1400px; /* Max width for larger screens */
-    margin: 0 auto; /* Center the container */
-    background-color: #34495e; /* Slightly lighter shade for main content area */
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
-
-/* Sidebar Navigation */
+/* Sidebar Styling (Circular Buttons) */
 .sidebar {
-    width: 280px;
-    background-color: #1f2b38; /* Darker shade for sidebar */
-    padding: 30px 20px;
-    position: relative; /* For the decoration element */
+    width: 150px; /* Width of the sidebar */
+    background-color: #EEE1B3;/* Dark sidebar color */
+    padding: 20px 0;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items in sidebar */
-    transition: width 0.3s ease; /* Animation for potential sidebar collapse (not implemented here) */
+    flex-direction: column; /* Ensure it's column for vertical alignment of circle */
+    justify-content: flex-start; /* Align navigation-circle to the top */
+    align-items: center; /* Center navigation-circle horizontally */
+    position: fixed; /* Fixed position */
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto; /* Allow scrolling if buttons exceed height */
+    z-index: 1000; /* Ensure sidebar is on top */
 }
 
-.profile-picture-container {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-bottom: 25px;
-    border: 5px solid #3498db; /* Accent color border */
-    box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+.navigation-circle {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    margin-top: 50px; /* Adjust as needed to position the group of buttons */
 }
 
-.profile-picture {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the area nicely */
+.nav-button {
+    background-color: #8E6C88; /* Button color */
+    color: black;
+    font-size: 18px;
+    border: none;
+    border-radius: 50%; /* Makes the button circular */
+    width: 100px;        /* Size of the button */
+    height: 100px;       /* Size of the button */
+    margin: 15px 0;   /* Spacing between buttons */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none; /* Remove underline if using <a> tags */
 }
 
-.sidebar ul {
-    list-style: none;
-    width: 100%;
+.nav-button:hover {
+    background-color: #8F6DAA; /* Darker on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-.sidebar ul li {
-    margin-bottom: 15px;
+.nav-button img {
+    width: 50%; /* Adjust icon size within the button */
+    height: 50%;
+    object-fit: contain;
 }
 
-.sidebar ul li a {
-    text-decoration: none;
-    color: #bdc3c7; /* Lighter gray for nav links */
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 1.1em;
-    display: block;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    text-align: center; /* Center text in nav links */
-}
-
-.sidebar ul li a:hover,
-.sidebar ul li a.active-link {
-    background-color: #3498db; /* Accent color */
-    color: #ffffff;
-    transform: translateX(5px); /* Simple hover animation */
-}
-
-/* Decorative element similar to the circle in the image */
-.sidebar-decoration {
-    position: absolute;
-    bottom: -50px; /* Position it partially out */
-    left: -75px;   /* Position it partially out */
-    width: 200px;
-    height: 200px;
-    background-color: rgba(52, 152, 219, 0.1); /* Semi-transparent accent */
-    border-radius: 50%;
-    z-index: 0;
-    pointer-events: none; /* So it doesn't interfere with clicks */
-}
-
-
-/* Main Content Area */
-.content {
-    flex-grow: 1; /* Takes up remaining space */
+/* Content Area Styling */
+.content-area {
+    flex-grow: 1; /* Takes up the remaining space */
     padding: 40px;
-    overflow-y: auto; /* Allow scrolling for content */
-    position: relative; /* For absolute positioned pseudo-elements if needed */
+    margin-left: 120px; /* Same as sidebar width to avoid overlap */
+    background-color: #ffffff;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1); /* Subtle shadow for separation */
+    overflow-y: auto; /* Allow content area to scroll if content is long */
+    height: 100vh; /* Ensure it takes full viewport height if needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .content-section {
-    display: none; /* Hidden by default */
-    opacity: 0;
-    animation: fadeInContent 0.8s forwards;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #4a6178; /* Separator line */
+    animation: fadeIn 0.5s ease-in-out;
+    margin-bottom: 30px;
 }
 
-.content-section:last-child {
-    border-bottom: none;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.content-section.active-section {
-    display: block;
-    opacity: 1;
-}
-
-@keyframes fadeInContent {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.content h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: #3498db; /* Accent color for headings */
-    margin-bottom: 20px;
-    font-size: 2em;
+.content-section h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
     border-bottom: 2px solid #3498db;
     padding-bottom: 10px;
-    display: inline-block;
+    font-size: 2em;
 }
 
-.content p, .content li {
+.content-section h2 {
+    color: #34495e;
+    margin-top: 20px;
     margin-bottom: 10px;
-    color: #ecf0f1;
-    font-size: 1.05em;
+    font-size: 1.5em;
 }
 
-.content ul {
-    list-style-position: inside;
-    padding-left: 20px;
+.content-section h3 {
+    color: #3498db; /* Changed from #7f8c8d to be more prominent */
+    margin-bottom: 5px;
+    font-size: 1.2em;
 }
 
-.content a {
-    color: #3498db; /* Accent color for links in content */
+.content-section p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+.content-section ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+.content-section ul li {
+    background-color: #ecf0f1;
+    border-left: 4px solid #3498db;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.content-section a {
+    color: #3498db;
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-.content a:hover {
-    color: #5dade2; /* Lighter accent on hover */
+.content-section a:hover {
     text-decoration: underline;
 }
 
-/* Specific section styling */
-.job, .education-item, .project {
+/* Specific item styling for content sections */
+.experience-item, .project-item, .skills-category {
     margin-bottom: 25px;
-    padding: 15px;
-    background-color: rgba(44, 62, 80, 0.5); /* Slightly transparent background for items */
-    border-left: 4px solid #3498db;
-    border-radius: 4px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #bdc3c7;
+}
+.experience-item:last-child, .project-item:last-child, .skills-category:last-child {
+    border-bottom: none;
 }
 
-.job h3, .education-item h3, .project h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    color: #ecf0f1;
-    margin-bottom: 5px;
-}
-
-.date {
+.date-range {
     font-style: italic;
-    color: #bdc3c7;
+    color: #7f8c8d;
     font-size: 0.9em;
     margin-bottom: 10px;
 }
 
-.skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.skill-tag {
-    background-color: #3498db;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    transition: transform 0.2s ease;
-}
-
-.skill-tag:hover {
-    transform: scale(1.05);
-}
-
-.project-link {
+.skills-list li { /* Style for individual skill tags */
     display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 8px;
     background-color: #3498db;
     color: white;
-    padding: 8px 15px;
-    border-radius: 4px;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.95em;
+    border-left: none; /* Override general li style if needed */
 }
 
-.project-link:hover {
-    background-color: #2980b9; /* Darker accent on hover */
-    text-decoration: none;
-    color: white;
-}
+/* Responsive adjustments */
+@media (max-width: 1500px) {
+    .main-container {
+        flex-direction: column; /* Stack sidebar and content vertically */
+    }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
     .sidebar {
-        width: 220px;
+        width: 100%; /* Full width */
+        height: auto; /* Auto height based on content */
+        position: static; /* No longer fixed */
+        flex-direction: row; /* Arrange navigation-circle horizontally */
+        justify-content: center; /* Center the navigation-circle */
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add some shadow when it's a top bar */
+        overflow-y: visible; /* No vertical scroll needed for horizontal layout */
     }
-    .sidebar-decoration { /* Adjust decoration if sidebar shrinks */
-        width: 150px;
-        height: 150px;
-        left: -50px;
-        bottom: -30px;
-    }
-    .profile-picture-container {
-        width: 120px;
-        height: 120px;
-    }
-}
 
+    .navigation-circle {
+        flex-direction: row; /* Buttons in a row */
+        margin-top: 0; /* Reset margin */
+        justify-content: center; /* Center buttons if they don't fill space */
+        flex-wrap: wrap; /* Allow buttons to wrap if too many for one line */
+    }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column; /* Stack sidebar and content */
+    .nav-button {
+        width: 50px;
+        height: 50px;
+        margin: 5px 10px; /* Adjust margin for horizontal layout */
     }
-    .sidebar {
-        width: 100%;
-        height: auto; /* Auto height for horizontal layout */
+
+    .content-area {
+        margin-left: 0; /* Remove margin when sidebar is on top */
         padding: 20px;
-        flex-direction: row; /* Align items horizontally */
-        justify-content: space-around; /* Space out profile and nav */
-        align-items: center;
-        overflow-x: auto; /* Allow horizontal scroll if nav items are too many */
+        height: auto; /* Adjust height for mobile flow */
     }
-    .sidebar ul {
-        display: flex; /* Horizontal navigation */
-        flex-wrap: wrap; /* Allow wrapping on small screens */
-        justify-content: center;
-        padding-left: 0;
-        margin-top: 10px; /* Add some space if profile pic is above */
-    }
-    .sidebar ul li {
-        margin-right: 10px;
-        margin-bottom: 10px; /* Add bottom margin for wrapped items */
-    }
-    .sidebar ul li a {
-        font-size: 1em;
-        padding: 8px 12px;
-    }
-    .sidebar-decoration {
-        display: none; /* Hide decoration on small screens or adjust as needed */
-    }
-    .profile-picture-container {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 0;
-        margin-right: 15px; /* Space between pic and nav */
-    }
-    .content {
-        padding: 20px;
-    }
-    .content h2 {
+
+    .content-section h1 {
         font-size: 1.8em;
     }
-}
-
-@media (max-width: 480px) {
-    .sidebar {
-        flex-direction: column; /* Stack profile pic and nav again on very small screens */
-        align-items: center;
+    .content-section h2 {
+        font-size: 1.3em;
     }
-    .profile-picture-container {
-        margin-bottom: 15px;
-        margin-right: 0;
+     .content-section h3 {
+        font-size: 1.1em;
     }
-    .sidebar ul {
-        justify-content: center;
+    .content-section p {
+        font-size: 1em;
     }
-    .sidebar ul li {
-        margin-right: 5px; /* Slightly reduce margin */
-    }
-    .content h2 {
-        font-size: 1.6em;
-    }
-    .content p, .content li {
+    .content-section ul li { /* General list items on mobile */
         font-size: 0.95em;
     }
-    .skill-tag {
-        padding: 6px 12px;
-        font-size: 0.85em;
+    .skills-list li { /* Skill tags on mobile */
+        font-size: 0.9em;
     }
-}
-
-.hidden {
-    display: none;
 }
