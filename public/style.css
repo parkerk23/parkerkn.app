@@ -1,11 +1,18 @@
 /* Global Resets and Body Styling */
-/* #EEE1B3 #8E6C88 #4A5043 #A44A3F #0D0630 */
+/* New professional pastel color scheme */
+/* #F8F9FA - Very light gray (almost white) for backgrounds
+   #E9ECEF - Light gray for secondary backgrounds
+   #ADB5BD - Medium gray for borders
+   #6C757D - Dark gray for text
+   #4361EE - Soft blue for accents/highlights
+   #3A0CA3 - Deeper purple for contrast elements */
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #EEE1B3;
-    color: #0D0630;
+    background-color: #F8F9FA;
+    color: #495057;
     line-height: 1.6;
 }
 
@@ -22,71 +29,74 @@ body {
 /* Sidebar Styling (Circular Buttons) */
 .sidebar {
     width: 150px; /* Width of the sidebar */
-    background-color: #EEE1B3;/* Dark sidebar color */
+    background-color: #E9ECEF;
     padding: 20px 0;
     display: flex;
-    flex-direction: column; /* Ensure it's column for vertical alignment of circle */
-    justify-content: flex-start; /* Align navigation-circle to the top */
-    align-items: center; /* Center navigation-circle horizontally */
-    position: fixed; /* Fixed position */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
-    overflow-y: auto; /* Allow scrolling if buttons exceed height */
-    z-index: 1000; /* Ensure sidebar is on top */
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
 }
 
 .navigation-circle {
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
+    flex-direction: column;
     align-items: center;
-    margin-top: 50px; /* Adjust as needed to position the group of buttons */
+    margin-top: 50px;
 }
 
 .nav-button {
-    background-color: #8E6C88; /* Button color */
-    color: black;
+    background-color: #4361EE;
+    color: white;
     font-size: 18px;
     border: none;
-    border-radius: 50%; /* Makes the button circular */
-    width: 100px;        /* Size of the button */
-    height: 100px;       /* Size of the button */
-    margin: 15px 0;   /* Spacing between buttons */
+    border-radius: 50%;
+    width: 60px;        /* Reduced size for better proportion */
+    height: 60px;       /* Reduced size for better proportion */
+    margin: 15px 0;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.3s ease;
-    text-decoration: none; /* Remove underline if using <a> tags */
+    text-decoration: none;
+    overflow: hidden; /* Prevent text overflow */
 }
 
 .nav-button:hover {
-    background-color: #8F6DAA; /* Darker on hover */
-    transform: scale(1.1); /* Slightly enlarge on hover */
+    background-color: #3A0CA3;
+    transform: scale(1.1);
 }
 
 .nav-button img {
-    width: 50%; /* Adjust icon size within the button */
-    height: 50%;
+    width: 24px; /* Fixed size for icons */
+    height: 24px;
     object-fit: contain;
 }
 
 /* Content Area Styling */
 .content-area {
-    flex-grow: 1; /* Takes up the remaining space */
+    flex-grow: 1;
     padding: 40px;
-    margin-left: 120px; /* Same as sidebar width to avoid overlap */
+    margin-left: 150px; /* Match sidebar width exactly */
     background-color: #ffffff;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1); /* Subtle shadow for separation */
-    overflow-y: auto; /* Allow content area to scroll if content is long */
-    height: 100vh; /* Ensure it takes full viewport height if needed */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-shadow: -2px 0 10px rgba(0,0,0,0.05);
+    overflow-y: auto;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 .content-section {
     animation: fadeIn 0.5s ease-in-out;
     margin-bottom: 30px;
+    max-width: 900px; /* Limit content width for better readability */
 }
 
 @keyframes fadeIn {
@@ -95,22 +105,22 @@ body {
 }
 
 .content-section h1 {
-    color: #2c3e50;
+    color: #3A0CA3;
     margin-bottom: 25px;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 2px solid #4361EE;
     padding-bottom: 10px;
     font-size: 2em;
 }
 
 .content-section h2 {
-    color: #34495e;
+    color: #495057;
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 1.5em;
 }
 
 .content-section h3 {
-    color: #3498db; /* Changed from #7f8c8d to be more prominent */
+    color: #4361EE;
     margin-bottom: 5px;
     font-size: 1.2em;
 }
@@ -128,8 +138,8 @@ body {
 }
 
 .content-section ul li {
-    background-color: #ecf0f1;
-    border-left: 4px solid #3498db;
+    background-color: #F8F9FA;
+    border-left: 4px solid #4361EE;
     padding: 10px 15px;
     margin-bottom: 8px;
     border-radius: 4px;
@@ -137,95 +147,112 @@ body {
 }
 
 .content-section a {
-    color: #3498db;
+    color: #4361EE;
     text-decoration: none;
 }
 
 .content-section a:hover {
     text-decoration: underline;
+    color: #3A0CA3;
 }
 
 /* Specific item styling for content sections */
 .experience-item, .project-item, .skills-category {
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px dashed #bdc3c7;
+    border-bottom: 1px dashed #DEE2E6;
 }
+
 .experience-item:last-child, .project-item:last-child, .skills-category:last-child {
     border-bottom: none;
 }
 
 .date-range {
     font-style: italic;
-    color: #7f8c8d;
+    color: #6C757D;
     font-size: 0.9em;
     margin-bottom: 10px;
 }
 
-.skills-list li { /* Style for individual skill tags */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skills-list li {
     display: inline-block;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    background-color: #3498db;
-    color: white;
-    padding: 5px 10px;
+    background-color: #4361EE;
+    color: black;
+    padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.95em;
-    border-left: none; /* Override general li style if needed */
+    border-left: none;
+    margin: 0;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1500px) {
     .main-container {
-        flex-direction: column; /* Stack sidebar and content vertically */
+        flex-direction: column;
     }
 
     .sidebar {
-        width: 100%; /* Full width */
-        height: auto; /* Auto height based on content */
-        position: static; /* No longer fixed */
-        flex-direction: row; /* Arrange navigation-circle horizontally */
-        justify-content: center; /* Center the navigation-circle */
+        width: 100%;
+        height: auto;
+        position: static;
+        flex-direction: row;
+        justify-content: center;
         padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add some shadow when it's a top bar */
-        overflow-y: visible; /* No vertical scroll needed for horizontal layout */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        overflow-y: visible;
     }
 
     .navigation-circle {
-        flex-direction: row; /* Buttons in a row */
-        margin-top: 0; /* Reset margin */
-        justify-content: center; /* Center buttons if they don't fill space */
-        flex-wrap: wrap; /* Allow buttons to wrap if too many for one line */
+        flex-direction: row;
+        margin-top: 0;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .nav-button {
         width: 50px;
         height: 50px;
-        margin: 5px 10px; /* Adjust margin for horizontal layout */
+        margin: 5px 10px;
+    }
+
+    .nav-button img {
+        width: 20px;
+        height: 20px;
     }
 
     .content-area {
-        margin-left: 0; /* Remove margin when sidebar is on top */
+        margin-left: 0;
         padding: 20px;
-        height: auto; /* Adjust height for mobile flow */
+        height: auto;
     }
 
     .content-section h1 {
         font-size: 1.8em;
     }
+
     .content-section h2 {
         font-size: 1.3em;
     }
-     .content-section h3 {
+
+    .content-section h3 {
         font-size: 1.1em;
     }
+
     .content-section p {
         font-size: 1em;
     }
-    .content-section ul li { /* General list items on mobile */
+
+    .content-section ul li {
         font-size: 0.95em;
     }
-    .skills-list li { /* Skill tags on mobile */
+
+    .skills-list li {
         font-size: 0.9em;
     }
 }

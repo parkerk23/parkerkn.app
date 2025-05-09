@@ -1,4 +1,4 @@
-const { createApp, ref, reactive } = Vue; // Import reactive
+const { createApp, ref, reactive } = Vue;
 
 createApp({
     setup() {
@@ -10,31 +10,29 @@ createApp({
 
         // Data for the 'About Me' section
         const aboutMe = reactive({
-            greeting: "Hello! I'm [Your Name], a passionate and dedicated [Your Profession/Aspiration].",
-            introduction: "With a keen interest in [Your Interests related to your field], I enjoy creating intuitive and dynamic user experiences.",
-            passions: "With a background in [Mention key skills or technologies e.g., front-end development, UI/UX design], I strive to build applications that are not only functional but also aesthetically pleasing.",
-            hobbies: "When I'm not coding or designing, you can find me [Your Hobbies/Interests]. I'm always eager to learn new things and take on challenging projects."
+            greeting: "Hello! I'm Parker Knapp, a passionate and aspiring software engineer.",
+            introduction: "With a keen interest in AI, crypto and backend development, I enjoy creating problem solving algorithms and working with new languages and frameworks.",
+            passions: "I strive to build applications that are not only functional but also aesthetically pleasing.",
+            hobbies: "When I'm not coding or designing, you can find me playing disc golf, or playing games. I'm always eager to learn new things and take on challenging projects."
         });
 
         // Data for the 'Experience' section
         const experience = reactive([
             {
-                title: "Job Title 1",
-                company: "Company Name 1",
-                dates: "Month Year - Month Year",
+                title: "Service Leader",
+                company: "Lowes Foods",
+                dates: "Aug, 2019 - Oct, 2023",
                 responsibilities: [
-                    "Responsibility 1 for Job 1",
-                    "Responsibility 2 for Job 1",
-                    "Responsibility 3 for Job 1",
+                    "Work with customers to resolve issues",
+                    "Ensure expected cash count matches actual cash count",
                 ]
             },
             {
-                title: "Job Title 2",
-                company: "Company Name 2",
-                dates: "Month Year - Month Year",
+                title: "Server",
+                company: "Daniels Restaurant and Catering",
+                dates: "Dec, 2023 - Current",
                 responsibilities: [
-                    "Responsibility 1 for Job 2",
-                    "Responsibility 2 for Job 2",
+                    "Serve customers and ensure they enjoy the dining experience",
                 ]
             }
             // Add more job experiences here
@@ -43,26 +41,24 @@ createApp({
         // Data for the 'Projects' section
         const projects = reactive([
             {
-                name: "Project Alpha",
-                description: "A brief description of Project Alpha, its purpose, and what you achieved.",
-                technologies: ["Vue.js", "Node.js", "CSS"],
-                link: "https://example.com/project-alpha" // Optional
+                name: "parkerkn.app",
+                description: "A resume webapp using Vue.js with responsive design",
+                technologies: ["Vue.js", "Node.js", "CSS", "HTML5"],
             },
             {
-                name: "Project Beta",
-                description: "Details about Project Beta, highlighting key features and challenges.",
+                name: "Job to House range finder",
+                description: "A query which searchs for houses for sale within some distance of locations of a company",
                 technologies: ["JavaScript", "HTML5", "API Integration"],
-                link: "" // Optional
+                link: ""
             }
             // Add more projects here
         ]);
 
-        // Data for the 'Skills' section (as requested: Skill 1, Skill 2, Skill 3, etc.)
-        // You can categorize them if you like.
+        // Data for the 'Skills' section
         const skills = reactive([
             {
                 name: "Programming Languages",
-                items: ["JavaScript (ES6+)", "Python", "HTML5", "CSS3"]
+                items: ["JavaScript (ES6+)", "Python", "HTML5", "CSS3", "C++", "Rust", "Java", "SQL"]
             },
             {
                 name: "Frameworks & Libraries",
@@ -70,21 +66,23 @@ createApp({
             },
             {
                 name: "Tools & Platforms",
-                items: ["Git & GitHub", "Docker", "Webpack", "Firebase"]
+                items: ["Git & GitHub", "Docker", "Linux"]
             },
             {
                 name: "Other Skills",
-                items: ["Agile Methodologies", "UI/UX Design Principles", "Responsive Web Design"]
+                items: ["Archlinux", "UI/UX Design Principles", "Responsive Web Design"]
             }
             // Add more skill categories or individual skills
         ]);
 
         // Data for the 'Contact' section
         const contact = reactive({
-            email: "[your.email@example.com]",
-            linkedin: "https://linkedin.com/in/[yourprofile]", // Full URL
-            github: "https://github.com/[yourusername]",   // Full URL
-            phone: "[Your Phone Number (Optional)]"
+            email: "parkerknappprof@gmail.com",
+            linkedin: "https://www.linkedin.com/in/parker-knapp-349b84172/", // Full URL
+            linkedinName: "LinkedIn Profile", // Display text for LinkedIn
+            github: "https://www.github.com/parkerk23",   // Full URL
+            githubName: "GitHub Profile", // Display text for GitHub
+            phone: "(919)-633-4191"
         });
 
         return {
