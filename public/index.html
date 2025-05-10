@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Vue Resume</title>
+    <title>Parker Knapp</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -29,27 +29,54 @@
                     </button>
                 </div>
             </nav>
+            
             <main class="content-area">
+                <!-- About Section -->
                 <section v-if="activeSection === 'about'" id="about" class="content-section">
                     <h1>About Me</h1>
-                    <p>{{ aboutMe.greeting }}</p>
-                    <p>{{ aboutMe.introduction }}</p>
-                    <p>{{ aboutMe.passions }}</p>
-                    <p>{{ aboutMe.hobbies }}</p>
+                    <div class="profile-container">
+                        <img class="profile-photo" src="assets/ProfilePic.jpg" alt="Profile Photo">
+
+                        <div class="profile-info">
+                            <p>{{ aboutMe.greeting }}</p>
+                            <p>{{ aboutMe.introduction }}</p>
+                            <p>{{ aboutMe.passions }}</p>
+                            <p>{{ aboutMe.hobbies }}</p>
+
+                            <a :href="aboutMe.resumeURL" download class="download-resume">
+                                <i class="fas fa-download"></i> Download Resume
+                            </a>
+
+                            <div class="social-links">
+                                <a v-if="contact.linkedin" :href="contact.linkedin" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a v-if="contact.github" :href="contact.github" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
+                <!-- Experience Section -->
                 <section v-if="activeSection === 'experience'" id="experience" class="content-section">
                     <h1>Experience</h1>
-                    <div v-for="(job, index) in experience" :key="index" class="experience-item">
-                        <h3>{{ job.title }} at {{ job.company }}</h3>
-                        <p class="date-range">{{ job.dates }}</p>
-                        <ul>
-                            <li v-for="(responsibility, i) in job.responsibilities" :key="i">{{ responsibility }}</li>
-                        </ul>
+                    <div class="timeline-container">
+                        <h2>My Journey</h2>
+                        <div class="timeline">
+                            <div v-for="(item, index) in timeline" :key="index" class="timeline-item" :class="{ 'right': index % 2 === 1 }">
+                                <div class="timeline-date">{{ item.date }}</div>
+                                <div class="timeline-content">
+                                    <h3>{{ item.title }}</h3>
+                                    <p>{{ item.description }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p v-if="!experience.length">Your work experience will go here. Add items to the 'experience' array in main.js.</p>
                 </section>
 
+                <!-- Projects Section -->
                 <section v-if="activeSection === 'projects'" id="projects" class="content-section">
                     <h1>Projects</h1>
                     <div v-for="(project, index) in projects" :key="index" class="project-item">
@@ -61,17 +88,35 @@
                     <p v-if="!projects.length">Your projects will go here. Add items to the 'projects' array in main.js.</p>
                 </section>
 
+                <!-- Skills Section -->
                 <section v-if="activeSection === 'skills'" id="skills" class="content-section">
                     <h1>Skills</h1>
                     <div v-for="(category, index) in skills" :key="index" class="skills-category">
                         <h2>{{ category.name }}</h2>
-                        <ul class="skills-list">
-                            <li v-for="(skill, i) in category.items" :key="i">{{ skill }}</li>
+
+                        <!-- For skills with proficiency levels -->
+                        <div v-if="category.showBars" class="skills-with-bars">
+                            <div v-for="(skill, i) in category.items" :key="i" class="skill-with-bar">
+                                <div class="skill-name">
+                                    <span>{{ skill.name }}</span>
+                                    <span>{{ skill.level }}%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-progress-fill" :style="{ width: skill.level + '%' }"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- For skills without proficiency levels (tags) -->
+                        <ul v-else class="skills-list">
+                            <li v-for="(skill, i) in category.items" :key="i">
+                                {{ typeof skill === 'string' ? skill : skill.name }}
+                            </li>
                         </ul>
                     </div>
-                     <p v-if="!skills.length">Your skills will go here. Add categories and items to the 'skills' array in main.js.</p>
                 </section>
 
+                <!-- Contact Section -->
                 <section v-if="activeSection === 'contact'" id="contact" class="content-section">
                     <h1>Contact</h1>
                     <p>You can reach me via:</p>
@@ -83,6 +128,13 @@
                     </ul>
                 </section>
             </main>
+            
+            <div class="right-sidebar">
+                <div class="quote-box">
+                    <p class="quote-text">"{{ currentQuote.text }}"</p>
+                    <p class="quote-author">— {{ currentQuote.author }}</p>
+                </div>
+            </div>
         </div>
     </div>
 

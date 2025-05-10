@@ -1,24 +1,31 @@
 /* Global Resets and Body Styling */
-/* New professional pastel color scheme */
-/* #F8F9FA - Very light gray (almost white) for backgrounds
-   #E9ECEF - Light gray for secondary backgrounds
-   #ADB5BD - Medium gray for borders
-   #6C757D - Dark gray for text
-   #4361EE - Soft blue for accents/highlights
-   #3A0CA3 - Deeper purple for contrast elements */
+:root {
+    /* Dark Theme Palette */
+    --color-background-dark: #121212; /* Very dark grey, almost black for main background */
+    --color-surface-dark: #1E1E1E; /* Slightly lighter dark for surfaces like sidebar, cards */
+    --color-border-dark: #2C2C2C; /* Dark grey for subtle borders */
+    --color-text-primary-dark: #E0E0E0; /* Light grey for primary text */
+    --color-text-secondary-dark: #A0A0A0; /* Medium grey for secondary text */
+
+    /* Orange Highlights */
+    --color-highlight-orange: #F97300; /* Bright orange for highlights */
+    --color-highlight-orange-deep: #D96300; /* Deeper orange for hover/accents */
+    --color-highlight-orange-text: #FFFFFF; /* Text color for on orange backgrounds */
+}
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F8F9FA;
-    color: #495057;
+    background-color: var(--color-background-dark);
+    color: var(--color-text-primary-dark);
     line-height: 1.6;
 }
 
 #app {
     width: 100%;
     min-height: 100vh;
+    background-color: var(--color-background-dark); /* Ensure app background is also dark */
 }
 
 .main-container {
@@ -29,7 +36,7 @@ body {
 /* Sidebar Styling (Circular Buttons) */
 .sidebar {
     width: 150px; /* Width of the sidebar */
-    background-color: #E9ECEF;
+    background-color: var(--color-surface-dark);
     padding: 20px 0;
     display: flex;
     flex-direction: column;
@@ -41,7 +48,7 @@ body {
     bottom: 0;
     overflow-y: auto;
     z-index: 1000;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2); /* Slightly more visible shadow for dark theme */
 }
 
 .navigation-circle {
@@ -52,33 +59,31 @@ body {
 }
 
 .nav-button {
-    background-color: #4361EE;
-    color: white;
+    background-color: var(--color-highlight-orange);
+    color: var(--color-highlight-orange-text); /* Text on orange buttons */
     font-size: 18px;
     border: none;
     border-radius: 50%;
-    width: 60px;        /* Reduced size for better proportion */
-    height: 60px;       /* Reduced size for better proportion */
+    width: 60px;
+    height: 60px;
     margin: 15px 0;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease, transform 0.3s ease;
     text-decoration: none;
-    overflow: hidden; /* Prevent text overflow */
+    overflow: hidden;
+}
+
+.nav-button i { /* Style for Font Awesome icons if used in buttons */
+    color: var(--color-highlight-orange-text);
 }
 
 .nav-button:hover {
-    background-color: #3A0CA3;
+    background-color: var(--color-highlight-orange-deep);
     transform: scale(1.1);
-}
-
-.nav-button img {
-    width: 24px; /* Fixed size for icons */
-    height: 24px;
-    object-fit: contain;
 }
 
 /* Content Area Styling */
@@ -86,8 +91,7 @@ body {
     flex-grow: 1;
     padding: 40px;
     margin-left: 150px; /* Match sidebar width exactly */
-    background-color: #ffffff;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.05);
+    background-color: var(--color-background-dark); /* Main content area background */
     overflow-y: auto;
     height: 100vh;
     box-sizing: border-box;
@@ -97,6 +101,9 @@ body {
     animation: fadeIn 0.5s ease-in-out;
     margin-bottom: 30px;
     max-width: 900px; /* Limit content width for better readability */
+    /* background-color: var(--color-surface-dark); /* Optional: if you want sections to have a slightly different dark background */
+    /* padding: 20px; */ /* Optional: if using background for sections */
+    /* border-radius: 8px; */ /* Optional: if using background for sections */
 }
 
 @keyframes fadeIn {
@@ -105,27 +112,28 @@ body {
 }
 
 .content-section h1 {
-    color: #3A0CA3;
+    color: var(--color-highlight-orange);
     margin-bottom: 25px;
-    border-bottom: 2px solid #4361EE;
+    border-bottom: 2px solid var(--color-highlight-orange);
     padding-bottom: 10px;
     font-size: 2em;
 }
 
 .content-section h2 {
-    color: #495057;
+    color: var(--color-text-primary-dark);
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 1.5em;
 }
 
 .content-section h3 {
-    color: #4361EE;
+    color: var(--color-highlight-orange);
     margin-bottom: 5px;
     font-size: 1.2em;
 }
 
 .content-section p {
+    color: var(--color-text-primary-dark); /* Ensure paragraph text is light */
     margin-bottom: 15px;
     font-size: 1.1em;
     line-height: 1.7;
@@ -138,29 +146,30 @@ body {
 }
 
 .content-section ul li {
-    background-color: #F8F9FA;
-    border-left: 4px solid #4361EE;
+    background-color: var(--color-surface-dark); /* Darker background for list items */
+    border-left: 4px solid var(--color-highlight-orange);
     padding: 10px 15px;
     margin-bottom: 8px;
     border-radius: 4px;
     font-size: 1em;
+    color: var(--color-text-primary-dark); /* Text color for list items */
 }
 
 .content-section a {
-    color: #4361EE;
+    color: var(--color-highlight-orange);
     text-decoration: none;
 }
 
 .content-section a:hover {
     text-decoration: underline;
-    color: #3A0CA3;
+    color: var(--color-highlight-orange-deep);
 }
 
 /* Specific item styling for content sections */
 .experience-item, .project-item, .skills-category {
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px dashed #DEE2E6;
+    border-bottom: 1px dashed var(--color-border-dark); /* Subtle dark border */
 }
 
 .experience-item:last-child, .project-item:last-child, .skills-category:last-child {
@@ -169,7 +178,7 @@ body {
 
 .date-range {
     font-style: italic;
-    color: #6C757D;
+    color: var(--color-text-secondary-dark); /* Secondary text color */
     font-size: 0.9em;
     margin-bottom: 10px;
 }
@@ -180,10 +189,10 @@ body {
     gap: 8px;
 }
 
-.skills-list li {
+.skills-list li { /* Skill tags */
     display: inline-block;
-    background-color: #4361EE;
-    color: black;
+    background-color: var(--color-highlight-orange);
+    color: var(--color-highlight-orange-text);
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.95em;
@@ -204,7 +213,7 @@ body {
         flex-direction: row;
         justify-content: center;
         padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         overflow-y: visible;
     }
 
@@ -221,9 +230,10 @@ body {
         margin: 5px 10px;
     }
 
-    .nav-button img {
-        width: 20px;
-        height: 20px;
+    .nav-button img, .nav-button i { /* Ensure icons in buttons are also smaller */
+        font-size: 16px; /* Adjust if using Font Awesome icon size */
+        width: 20px;   /* Adjust if using img */
+        height: 20px;  /* Adjust if using img */
     }
 
     .content-area {
@@ -256,3 +266,248 @@ body {
         font-size: 0.9em;
     }
 }
+
+.skill-with-bar {
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    color: var(--color-text-primary-dark);
+}
+
+.skill-name span:first-child {
+    font-weight: 600;
+}
+
+.skill-progress {
+    height: 8px;
+    background-color: var(--color-surface-dark); /* Dark background for the track */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress-fill {
+    height: 100%;
+    background-color: var(--color-highlight-orange); /* Orange fill */
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+    .profile-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--color-surface-dark); /* Border around photo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .profile-photo {
+        margin-right: 30px;
+        margin-bottom: 0;
+    }
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.download-resume {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--color-surface-dark);
+    color: var(--color-highlight-orange-text); /* CORRECTED: Use the text color for orange backgrounds */
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.download-resume:hover {
+    background-color: var(--color-surface-dark);
+    text-decoration: none;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-surface-dark); /* Dark background for social icons */
+    border-radius: 50%;
+    color: var(--color-highlight-orange); /* Orange icon color */
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--color-highlight-orange);
+    color: var(--color-highlight-orange-text); /* White/light text on orange hover */
+    transform: translateY(-3px);
+}
+
+.content-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-section {
+    flex: 2; /* Takes up most of the space */
+    margin-right: 30px;
+}
+
+.right-sidebar {
+    flex: 1; /* Takes up less space */
+    max-width: 300px;
+    position: sticky;
+    top: 40px;
+}
+
+.quote-box {
+    background-color: var(--color-surface-dark);
+    border-left: 4px solid var(--color-highlight-orange);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.quote-author {
+    text-align: right;
+    color: var(--color-highlight-orange);
+    font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+    .content-area {
+        flex-direction: column;
+    }
+    .right-sidebar {
+        max-width: 100%;
+        margin-top: 30px;
+    }
+}
+
+.timeline-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: var(--color-surface-dark);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.timeline-container h2 {
+    text-align: center;
+    color: var(--color-highlight-orange);
+    margin-bottom: 20px;
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background-color: var(--color-highlight-orange);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.timeline-date {
+    position: absolute;
+    width: 80px;
+    padding: 5px 10px;
+    background-color: var(--color-highlight-orange);
+    color: var(--color-highlight-orange-text);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 500;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.timeline-content {
+    padding: 40px;
+    background-color: var(--color-background-dark);
+    border-radius: 6px;
+    margin-top: 55px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent transparent var(--color-background-dark) transparent;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    color: var(--color-text-primary-dark);
+    font-size: 1.1em;
+}
+
+.timeline-content p {
+    color: var(--color-text-secondary-dark);
+    font-size: 0.9em;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .timeline-container {
+        max-width: 100%;
+    }
+}
+
+/* Ensure there is NO extra closing brace after this line */
