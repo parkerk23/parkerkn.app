@@ -8,11 +8,13 @@ createApp({
             activeSection.value = sectionName;
         };
 const quotes = [
-    { text: "Code is like humor. When you have to explain it, it's bad.", author: "Cory House" },
-    { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
-    { text: "Experience is the name everyone gives to their mistakes.", author: "Oscar Wilde" },
-    { text: "Programming isn't about what you know; it's about what you can figure out.", author: "Chris Pine" },
-    { text: "The only way to learn a new programming language is by writing programs in it.", author: "Dennis Ritchie" }
+    { text: "Victorious warriors win first and then go to war, while defeated warriors go to war first and then seek to win", author: "Sun Tzu" },
+    { text: "Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth", author: "Marcus Aurelius" },
+    { text: "In a closed society where everybody's guilty, the only crime is getting caught. In a world of thieves, the only final sin is stupidity", author: "Hunter S. Thompson" },
+    { text: "It's the basic condition of life to be required to violate our own identity", author: "Philip K. Dick" },
+    { text: "Any decent politician is masochistic enough to dream now and then of going down in flames while the angels sing", author: "Isaac Asimov" },
+    { text: "We get into the habit of living before acquiring the habit of thinking", author: "Albert Camus"},
+    { text: "It strikes me profoundly that the world is more often than not a bad and cruel place.", author: "Bret Easton Ellis"},
 ];
 
 const currentQuote = ref(quotes[Math.floor(Math.random() * quotes.length)]);
@@ -80,13 +82,13 @@ setInterval(() => {
         name: "Programming Languages",
         showBars: true,
         items: [
-            { name: "C#", level: 80},
             { name: "Java", level: 95},
-            { name: "Rust", level: 60 },
             { name: "JavaScript (ES6+)", level: 90 },
             { name: "Python", level: 85 },
-            { name: "HTML5", level: 95 },
-            { name: "CSS3", level: 85 }
+            { name: "C#", level: 80},
+            { name: "HTML5", level: 75 },
+            { name: "CSS3", level: 75 },
+            { name: "Rust", level: 60 },
         ]
     },
     {
@@ -131,9 +133,14 @@ setInterval(() => {
         ]); */
 const timeline = reactive([
     {
+        date:'2016',
+        title:'First started programming',
+        description:'First program in visual basic then moved to learning C# and Java'
+    },
+    {
         date: '2019',
-        title: 'Started at Lowes Foods',
-        description: 'Began my journey as a Service Leader'
+        title: 'Guest service leader',
+        description: 'Worked at Lowes Foods managing staff until 2023'
     },
     {
         date: '2021',
@@ -146,9 +153,9 @@ const timeline = reactive([
         description: 'Expanded my experience in the service industry'
     },
     {
-        date: '2024',
-        title: 'Built My First Portfolio',
-        description: 'Created this site to showcase my work'
+        date: '2025',
+        title: 'Built this resume website',
+        description: 'Created this site to showcase my work and experience'
     }
 ]);
 
