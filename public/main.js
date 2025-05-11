@@ -19,13 +19,12 @@ const quotes = [
 
 const currentQuote = ref(quotes[Math.floor(Math.random() * quotes.length)]);
 
-// Optional: rotate quotes every 10 seconds
+// rotate quotes every 10 seconds
 setInterval(() => {
     let newIndex;
     do {
         newIndex = Math.floor(Math.random() * quotes.length);
-    } while (quotes[newIndex].text === currentQuote.value.text); // Ensure different quote
-    
+    } while (quotes[newIndex].text === currentQuote.value.text);
     currentQuote.value = quotes[newIndex];
 }, 10000);
 
@@ -37,28 +36,6 @@ setInterval(() => {
             hobbies: "When I'm not coding or designing, you can find me playing disc golf, or playing games. I'm always eager to learn new things and take on challenging projects.",
             resumeURL: "assets/ParkerResume.pdf"
         });
-
-        // Data for the 'Experience' section
-        const experience = reactive([
-            {
-                title: "Service Leader",
-                company: "Lowes Foods",
-                dates: "Aug, 2019 - Oct, 2023",
-                responsibilities: [
-                    "Work with customers to resolve issues",
-                    "Ensure expected cash count matches actual cash count",
-                ]
-            },
-            {
-                title: "Server",
-                company: "Daniels Restaurant and Catering",
-                dates: "Dec, 2023 - Current",
-                responsibilities: [
-                    "Serve customers and ensure they enjoy the dining experience",
-                ]
-            }
-            // Add more job experiences here
-        ]);
 
         // Data for the 'Projects' section
         const projects = reactive([
@@ -73,10 +50,9 @@ setInterval(() => {
                 technologies: ["JavaScript", "HTML5", "API Integration"],
                 link: ""
             }
-            // Add more projects here
         ]);
 
-        // Data for the 'Skills' section
+      // Data for the 'Skills' section
       const skills = reactive([
     {
         name: "Programming Languages",
@@ -112,25 +88,7 @@ setInterval(() => {
         items: ["Agile Methodologies", "UI/UX Design Principles", "Responsive Web Design"]
     }
 ]);
-  /*      const skills = reactive([
-            {
-                name: "Programming Languages",
-                items: ["JavaScript (ES6+)", "Python", "HTML5", "CSS3", "C++", "Rust", "Java", "SQL"]
-            },
-            {
-                name: "Frameworks & Libraries",
-                items: ["Vue.js", "React", "Node.js", "Express.js"]
-            },
-            {
-                name: "Tools & Platforms",
-                items: ["Git & GitHub", "Docker", "Linux"]
-            },
-            {
-                name: "Other Skills",
-                items: ["Archlinux", "UI/UX Design Principles", "Responsive Web Design"]
-            }
-            // Add more skill categories or individual skills
-        ]); */
+
 const timeline = reactive([
     {
         date:'2016',
@@ -170,13 +128,12 @@ const timeline = reactive([
         });
 
         return {
-            activeSection,
-            showSection,
-            aboutMe,
-            experience,
-            projects,
-            skills,
-            contact,
+          activeSection,
+          showSection,
+          aboutMe,
+          projects,
+          skills,
+          contact,
           currentQuote,
           timeline
         };

@@ -25,7 +25,7 @@ body {
 #app {
     width: 100%;
     min-height: 100vh;
-    background-color: var(--color-background-dark); /* Ensure app background is also dark */
+    background-color: var(--color-background-dark);
 }
 
 .main-container {
@@ -509,5 +509,3 @@ body {
         max-width: 100%;
     }
 }
-
-/* Ensure there is NO extra closing brace after this line */
