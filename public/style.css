@@ -1,16 +1,24 @@
 /* Global Resets and Body Styling */
 :root {
     /* Dark Theme Palette */
-    --color-background-dark: #121212; /* Very dark grey, almost black for main background */
-    --color-surface-dark: #1E1E1E; /* Slightly lighter dark for surfaces like sidebar, cards */
-    --color-border-dark: #2C2C2C; /* Dark grey for subtle borders */
-    --color-text-primary-dark: #E0E0E0; /* Light grey for primary text */
-    --color-text-secondary-dark: #A0A0A0; /* Medium grey for secondary text */
+    --color-background-dark: #121212;
+    /* Very dark grey, almost black for main background */
+    --color-surface-dark: #1E1E1E;
+    /* Slightly lighter dark for surfaces like sidebar, cards */
+    --color-border-dark: #2C2C2C;
+    /* Dark grey for subtle borders */
+    --color-text-primary-dark: #E0E0E0;
+    /* Light grey for primary text */
+    --color-text-secondary-dark: #A0A0A0;
+    /* Medium grey for secondary text */
 
     /* Orange Highlights */
-    --color-highlight-orange: #F97300; /* Bright orange for highlights */
-    --color-highlight-orange-deep: #D96300; /* Deeper orange for hover/accents */
-    --color-highlight-orange-text: #FFFFFF; /* Text color for on orange backgrounds */
+    --color-highlight-orange: #F97300;
+    /* Bright orange for highlights */
+    --color-highlight-orange-deep: #D96300;
+    /* Deeper orange for hover/accents */
+    --color-highlight-orange-text: #FFFFFF;
+    /* Text color for on orange backgrounds */
 }
 
 body {
@@ -22,6 +30,9 @@ body {
     line-height: 1.6;
 }
 
+
+
+
 #app {
     width: 100%;
     min-height: 100vh;
@@ -31,11 +42,14 @@ body {
 .main-container {
     display: flex;
     min-height: 100vh;
+    width: 100%; /* Ensure it doesn't exceed 100% width */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Sidebar Styling (Circular Buttons) */
 .sidebar {
-    width: 150px; /* Width of the sidebar */
+    width: 150px;
+    /* Width of the sidebar */
     background-color: var(--color-surface-dark);
     padding: 20px 0;
     display: flex;
@@ -48,7 +62,8 @@ body {
     bottom: 0;
     overflow-y: auto;
     z-index: 1000;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.2); /* Slightly more visible shadow for dark theme */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    /* Slightly more visible shadow for dark theme */
 }
 
 .navigation-circle {
@@ -60,7 +75,8 @@ body {
 
 .nav-button {
     background-color: var(--color-highlight-orange);
-    color: var(--color-highlight-orange-text); /* Text on orange buttons */
+    color: var(--color-highlight-orange-text);
+    /* Text on orange buttons */
     font-size: 18px;
     border: none;
     border-radius: 50%;
@@ -77,7 +93,8 @@ body {
     overflow: hidden;
 }
 
-.nav-button i { /* Style for Font Awesome icons if used in buttons */
+.nav-button i {
+    /* Style for Font Awesome icons if used in buttons */
     color: var(--color-highlight-orange-text);
 }
 
@@ -86,29 +103,38 @@ body {
     transform: scale(1.1);
 }
 
-/* Content Area Styling */
 .content-area {
+    display: flex;
     flex-grow: 1;
+    margin-left: 150px; /* Sidebar width */
     padding: 40px;
-    margin-left: 150px; /* Match sidebar width exactly */
-    background-color: var(--color-background-dark); /* Main content area background */
-    overflow-y: auto;
-    height: 100vh;
     box-sizing: border-box;
+    justify-content: space-between;
+    gap: 20px; /* Space between content and quotes */
 }
 
 .content-section {
     animation: fadeIn 0.5s ease-in-out;
     margin-bottom: 30px;
-    max-width: 900px; /* Limit content width for better readability */
+    max-width: 900px;
+    /* Limit content width for better readability */
     /* background-color: var(--color-surface-dark); /* Optional: if you want sections to have a slightly different dark background */
-    /* padding: 20px; */ /* Optional: if using background for sections */
-    /* border-radius: 8px; */ /* Optional: if using background for sections */
+    /* padding: 20px; */
+    /* Optional: if using background for sections */
+    /* border-radius: 8px; */
+    /* Optional: if using background for sections */
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .content-section h1 {
@@ -133,7 +159,8 @@ body {
 }
 
 .content-section p {
-    color: var(--color-text-primary-dark); /* Ensure paragraph text is light */
+    color: var(--color-text-primary-dark);
+    /* Ensure paragraph text is light */
     margin-bottom: 15px;
     font-size: 1.1em;
     line-height: 1.7;
@@ -146,13 +173,15 @@ body {
 }
 
 .content-section ul li {
-    background-color: var(--color-surface-dark); /* Darker background for list items */
+    background-color: var(--color-surface-dark);
+    /* Darker background for list items */
     border-left: 4px solid var(--color-highlight-orange);
     padding: 10px 15px;
     margin-bottom: 8px;
     border-radius: 4px;
     font-size: 1em;
-    color: var(--color-text-primary-dark); /* Text color for list items */
+    color: var(--color-text-primary-dark);
+    /* Text color for list items */
 }
 
 .content-section a {
@@ -166,19 +195,25 @@ body {
 }
 
 /* Specific item styling for content sections */
-.experience-item, .project-item, .skills-category {
+.experience-item,
+.project-item,
+.skills-category {
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px dashed var(--color-border-dark); /* Subtle dark border */
+    border-bottom: 1px dashed var(--color-border-dark);
+    /* Subtle dark border */
 }
 
-.experience-item:last-child, .project-item:last-child, .skills-category:last-child {
+.experience-item:last-child,
+.project-item:last-child,
+.skills-category:last-child {
     border-bottom: none;
 }
 
 .date-range {
     font-style: italic;
-    color: var(--color-text-secondary-dark); /* Secondary text color */
+    color: var(--color-text-secondary-dark);
+    /* Secondary text color */
     font-size: 0.9em;
     margin-bottom: 10px;
 }
@@ -189,7 +224,8 @@ body {
     gap: 8px;
 }
 
-.skills-list li { /* Skill tags */
+.skills-list li {
+    /* Skill tags */
     display: inline-block;
     background-color: var(--color-highlight-orange);
     color: var(--color-highlight-orange-text);
@@ -213,7 +249,7 @@ body {
         flex-direction: row;
         justify-content: center;
         padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         overflow-y: visible;
     }
 
@@ -230,10 +266,15 @@ body {
         margin: 5px 10px;
     }
 
-    .nav-button img, .nav-button i { /* Ensure icons in buttons are also smaller */
-        font-size: 16px; /* Adjust if using Font Awesome icon size */
-        width: 20px;   /* Adjust if using img */
-        height: 20px;  /* Adjust if using img */
+    .nav-button img,
+    .nav-button i {
+        /* Ensure icons in buttons are also smaller */
+        font-size: 16px;
+        /* Adjust if using Font Awesome icon size */
+        width: 20px;
+        /* Adjust if using img */
+        height: 20px;
+        /* Adjust if using img */
     }
 
     .content-area {
@@ -284,17 +325,20 @@ body {
 
 .skill-progress {
     height: 8px;
-    background-color: var(--color-surface-dark); /* Dark background for the track */
+    background-color: var(--color-surface-dark);
+    /* Dark background for the track */
     border-radius: 4px;
     overflow: hidden;
 }
 
 .skill-progress-fill {
     height: 100%;
-    background-color: var(--color-highlight-orange); /* Orange fill */
+    background-color: var(--color-highlight-orange);
+    /* Orange fill */
     border-radius: 4px;
     transition: width 1s ease-in-out;
 }
+
 .profile-container {
     display: flex;
     flex-direction: column;
@@ -312,10 +356,11 @@ body {
 .profile-photo {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    border-radius: 30%;
     object-fit: cover;
-    border: 5px solid var(--color-surface-dark); /* Border around photo */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border: 5px solid var(--color-surface-dark);
+    /* Border around photo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
 }
 
@@ -335,7 +380,8 @@ body {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: var(--color-surface-dark);
-    color: var(--color-highlight-orange-text); /* CORRECTED: Use the text color for orange backgrounds */
+    color: var(--color-highlight-orange-text);
+    /* CORRECTED: Use the text color for orange backgrounds */
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -359,16 +405,19 @@ body {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: var(--color-surface-dark); /* Dark background for social icons */
+    background-color: var(--color-surface-dark);
+    /* Dark background for social icons */
     border-radius: 50%;
-    color: var(--color-highlight-orange); /* Orange icon color */
+    color: var(--color-highlight-orange);
+    /* Orange icon color */
     font-size: 1.2em;
     transition: all 0.3s ease;
 }
 
 .social-link:hover {
     background-color: var(--color-highlight-orange);
-    color: var(--color-highlight-orange-text); /* White/light text on orange hover */
+    color: var(--color-highlight-orange-text);
+    /* White/light text on orange hover */
     transform: translateY(-3px);
 }
 
@@ -378,25 +427,25 @@ body {
 }
 
 .content-section {
-    flex: 2; /* Takes up most of the space */
+    flex: 2;
+    /* Takes up most of the space */
     margin-right: 30px;
 }
 
 .right-sidebar {
-    flex: 1; /* Takes up less space */
-    max-width: 300px;
-    position: sticky;
-    top: 40px;
+    flex: 0 0 300px; /* Fixed width, won't grow or shrink */
+    position: relative; /* Remove sticky if it's causing layout issues */
+    margin-top: 100px;
 }
-
 .quote-box {
     background-color: var(--color-surface-dark);
     border-left: 4px solid var(--color-highlight-orange);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    margin-top: 100px;
-    margin-bottom: 30px;
+    /* Ensure the box doesn't push right */
+    width: 100%;
+    box-sizing: border-box; 
 }
 
 .quote-text {
@@ -415,94 +464,86 @@ body {
     .content-area {
         flex-direction: column;
     }
+
     .right-sidebar {
         max-width: 100%;
         margin-top: 30px;
     }
 }
 
-.timeline-container {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
+.timeline-snake {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 30px;
+    padding: 10px;
+    height: 40vh; /* Limits the entire grid height */
+    max-width: 900px;
+}
+
+/* Snake Path: Reverse the order of the second row */
+.snake-item:nth-child(1) { grid-area: 1 / 1; }
+.snake-item:nth-child(2) { grid-area: 1 / 2; }
+.snake-item:nth-child(3) { grid-area: 1 / 3; }
+.snake-item:nth-child(4) { grid-area: 2 / 3; } /* Start of 2nd row (Right) */
+.snake-item:nth-child(5) { grid-area: 2 / 2; } /* Middle of 2nd row */
+.snake-item:nth-child(6) { grid-area: 2 / 1; } /* End of 2nd row (Left) */
+
+.snake-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-card {
     background-color: var(--color-surface-dark);
+    border: 2px solid var(--color-highlight-orange);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.timeline-container h2 {
-    text-align: center;
-    color: var(--color-highlight-orange);
-    margin-bottom: 20px;
-}
-
-.timeline {
-    position: relative;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 2px;
-    background-color: var(--color-highlight-orange);
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 30px;
+    padding: 15px;
     width: 100%;
+    height: 100%;
+    max-height: 130px; /* Prevents boxes from becoming too tall */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
-.timeline-date {
+.card-year {
+    color: var(--color-highlight-orange);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.item-card h3 {
+    font-size: 0.95rem;
+    margin: 5px 0;
+}
+
+.item-card p {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Arrow Positioning */
+.snake-arrow {
     position: absolute;
-    width: 80px;
-    padding: 5px 10px;
-    background-color: var(--color-highlight-orange);
-    color: var(--color-highlight-orange-text);
-    border-radius: 4px;
-    text-align: center;
-    font-size: 0.9em;
-    font-weight: 500;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+    color: var(--color-highlight-orange);
+    font-size: 1.2rem;
 }
 
-.timeline-content {
-    padding: 40px;
-    background-color: var(--color-background-dark);
-    border-radius: 6px;
-    margin-top: 55px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    position: relative;
-}
+/* Top Row Right Arrows */
+.snake-item:nth-child(1) .snake-arrow,
+.snake-item:nth-child(2) .snake-arrow { right: -22px; }
 
-.timeline-content::before {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 10px;
-    border-color: transparent transparent var(--color-background-dark) transparent;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
+/* Transition Down Arrow */
+.snake-item:nth-child(3) .snake-arrow { bottom: -25px; }
 
-.timeline-content h3 {
-    margin-top: 0;
-    color: var(--color-text-primary-dark);
-    font-size: 1.1em;
-}
-
-.timeline-content p {
-    color: var(--color-text-secondary-dark);
-    font-size: 0.9em;
-    margin-bottom: 0;
-}
+/* Bottom Row Left Arrows */
+.snake-item:nth-child(4) .snake-arrow,
+.snake-item:nth-child(5) .snake-arrow { left: -22px; }
 
 @media (max-width: 768px) {
     .timeline-container {

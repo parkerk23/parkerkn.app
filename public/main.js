@@ -7,26 +7,26 @@ createApp({
         const showSection = (sectionName) => {
             activeSection.value = sectionName;
         };
-const quotes = [
-    { text: "Victorious warriors win first and then go to war, while defeated warriors go to war first and then seek to win", author: "Sun Tzu" },
-    { text: "Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth", author: "Marcus Aurelius" },
-    { text: "In a closed society where everybody's guilty, the only crime is getting caught. In a world of thieves, the only final sin is stupidity", author: "Hunter S. Thompson" },
-    { text: "It's the basic condition of life to be required to violate our own identity", author: "Philip K. Dick" },
-    { text: "Any decent politician is masochistic enough to dream now and then of going down in flames while the angels sing", author: "Isaac Asimov" },
-    { text: "We get into the habit of living before acquiring the habit of thinking", author: "Albert Camus"},
-    { text: "It strikes me profoundly that the world is more often than not a bad and cruel place.", author: "Bret Easton Ellis"},
-];
+        const quotes = [
+            { text: "Victorious warriors win first and then go to war, while defeated warriors go to war first and then seek to win", author: "Sun Tzu" },
+            { text: "Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth", author: "Marcus Aurelius" },
+            { text: "In a closed society where everybody's guilty, the only crime is getting caught. In a world of thieves, the only final sin is stupidity", author: "Hunter S. Thompson" },
+            { text: "It's the basic condition of life to be required to violate our own identity", author: "Philip K. Dick" },
+            { text: "Any decent politician is masochistic enough to dream now and then of going down in flames while the angels sing", author: "Isaac Asimov" },
+            { text: "We get into the habit of living before acquiring the habit of thinking", author: "Albert Camus" },
+            { text: "It strikes me profoundly that the world is more often than not a bad and cruel place.", author: "Bret Easton Ellis" },
+        ];
 
-const currentQuote = ref(quotes[Math.floor(Math.random() * quotes.length)]);
+        const currentQuote = ref(quotes[Math.floor(Math.random() * quotes.length)]);
 
-// rotate quotes every 10 seconds
-setInterval(() => {
-    let newIndex;
-    do {
-        newIndex = Math.floor(Math.random() * quotes.length);
-    } while (quotes[newIndex].text === currentQuote.value.text);
-    currentQuote.value = quotes[newIndex];
-}, 10000);
+        // rotate quotes every 10 seconds
+        setInterval(() => {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * quotes.length);
+            } while (quotes[newIndex].text === currentQuote.value.text);
+            currentQuote.value = quotes[newIndex];
+        }, 10000);
 
         // Data for the 'About Me' section
         const aboutMe = reactive({
@@ -43,79 +43,77 @@ setInterval(() => {
                 name: "parkerkn.app",
                 description: "A resume webapp using Vue.js with responsive design",
                 technologies: ["Vue.js", "Node.js", "CSS", "HTML5"],
+                link: "https://github.com/parkerk23/parkerkn.app"
             },
             {
-                name: "Job to House range finder",
-                description: "A query which searchs for houses for sale within some distance of locations of a company",
-                technologies: ["JavaScript", "HTML5", "API Integration"],
-                link: ""
+                name: "MovieStat",
+                description: "A mobile app that allows users to rate movies aswell as actors and get recommendations based on their ratings for the actors.",
+                technologies: ["Java", "SQLite", "ROOM"],
+                link: "https://github.com/parkerk23/Moviestat"
             }
         ]);
 
-      // Data for the 'Skills' section
-      const skills = reactive([
-    {
-        name: "Programming Languages",
-        showBars: true,
-        items: [
-            { name: "Java", level: 95},
-            { name: "JavaScript (ES6+)", level: 90 },
-            { name: "Python", level: 85 },
-            { name: "C#", level: 80},
-            { name: "HTML5", level: 75 },
-            { name: "CSS3", level: 75 },
-            { name: "Rust", level: 60 },
-        ]
-    },
-    {
-        name: "Frameworks & Libraries",
-        showBars: true,
-        items: [
-            { name: "Vue.js", level: 85 },
-            { name: "React", level: 80 },
-            { name: "Node.js", level: 75 },
-            { name: "Express.js", level: 70 }
-        ]
-    },
-    {
-        name: "Tools & Platforms",
-        showBars: false, // Use tag style for these
-        items: ["Git & GitHub", "Docker", "Webpack", "Firebase"]
-    },
-    {
-        name: "Other Skills",
-        showBars: false, // Use tag style for these
-        items: ["Agile Methodologies", "UI/UX Design Principles", "Responsive Web Design"]
-    }
-]);
+        // Data for the 'Skills' section
+        const skills = reactive([
+            {
+                name: "Programming Languages",
+                showBars: false,
+                items: ["Java", "JavaScript", "Python", "HTML5", "CSS3", "C++"]
+            },
+            {
+                name: "Frameworks & Libraries",
+                showBars: false,
+                items: ["Vue.js", "React", "Node.js", "Express.js"]
+            },
+            {
+                name: "Tools & Platforms",
+                showBars: false, // Use tag style for these
+                items: ["Git & GitHub", "Docker", "AWS", "Linux"]
+            },
+            {
+                name: "Other Skills",
+                showBars: false, // Use tag style for these
+                items: ["Agile Methodologies", "UI/UX Design Principles", "Responsive Web Design"]
+            }
+        ]);
 
-const timeline = reactive([
-    {
-        date:'2016',
-        title:'First started programming',
-        description:'First program in visual basic then moved to learning C# and Java'
-    },
-    {
-        date: '2019',
-        title: 'Guest service leader',
-        description: 'Worked at Lowes Foods managing staff until 2023'
-    },
-    {
-        date: '2021',
-        title: 'Started Learning Web Dev',
-        description: 'Self-taught JavaScript and Vue.js'
-    },
-    {
-        date: '2023',
-        title: 'Joined Daniels Restaurant',
-        description: 'Expanded my experience in the service industry'
-    },
-    {
-        date: '2025',
-        title: 'Built this resume website',
-        description: 'Created this site to showcase my work and experience'
-    }
-]);
+        const timeline = reactive([
+            {
+                date: '2016',
+                title: 'First started programming',
+                description: 'Started with visual basic, moved to c++ and java shortly after'
+            },
+            {
+                date: '2019',
+                title: 'Guest service leader',
+                description: 'Worked at Lowes Foods managing staff until 2023'
+            },
+            {
+                date: '2021',
+                title: 'Started Learning Web Dev',
+                description: 'Self-taught JavaScript and Node.js'
+            },
+            {
+                date: '2023',
+                title: 'Served at Daniels Restaurant',
+                description: 'Started working in the food service industry'
+            },
+            {
+                date: '2024',
+                title: 'Built this resume website',
+                description: 'Created this site to showcase my work and experience'
+            },
+            {
+                date: '2026',
+                title: 'Graduated from Western Governors University',
+                description: 'Completed my Bachelor\'s degree in Software Engineering'
+            }
+        ]);
+        const getArrowDirection = (index) => {
+            if (index === 2) return 'fa-arrow-down'; // End of top row
+            if (index >= 3) return 'fa-arrow-left';  // Bottom row flows left
+            return 'fa-arrow-right';                // Top row flows right
+        };
 
         // Data for the 'Contact' section
         const contact = reactive({
@@ -128,14 +126,15 @@ const timeline = reactive([
         });
 
         return {
-          activeSection,
-          showSection,
-          aboutMe,
-          projects,
-          skills,
-          contact,
-          currentQuote,
-          timeline
+            activeSection,
+            showSection,
+            aboutMe,
+            projects,
+            skills,
+            contact,
+            currentQuote,
+            timeline,
+            getArrowDirection
         };
     }
 }).mount('#app');

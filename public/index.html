@@ -62,15 +62,15 @@
                 <!-- Experience Section -->
                 <section v-if="activeSection === 'experience'" id="experience" class="content-section">
                     <h1>Experience</h1>
-                    <div class="timeline-container">
-                        <h2>My Journey</h2>
-                        <div class="timeline">
-                            <div v-for="(item, index) in timeline" :key="index" class="timeline-item" :class="{ 'right': index % 2 === 1 }">
-                                <div class="timeline-date">{{ item.date }}</div>
-                                <div class="timeline-content">
-                                    <h3>{{ item.title }}</h3>
-                                    <p>{{ item.description }}</p>
-                                </div>
+                    <div class="timeline-snake">
+                        <div v-for="(item, index) in timeline" :key="index" class="snake-item">
+                            <div class="item-card">
+                                <span class="card-year">{{ item.date }}</span>
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.description }}</p>
+                            </div>
+                            <div v-if="index < timeline.length - 1" class="snake-arrow">
+                                <i class="fas" :class="getArrowDirection(index)"></i>
                             </div>
                         </div>
                     </div>
